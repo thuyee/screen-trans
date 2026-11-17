@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- ============ DỊCH THUẬT ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_translate">
+        <ListPreference
+            android:defaultValue="auto"
+            android:entries="@array/engine_names"
+            android:entryValues="@array/engine_values"
+            android:key="engine"
+            android:title="@string/pref_engine"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="google_key"
+            android:title="@string/pref_google_key" />
+        <EditTextPreference
+            android:key="gemini_key"
+            android:title="@string/pref_gemini_key" />
+        <EditTextPreference
+            android:defaultValue="gemini-2.5-flash"
+            android:key="gemini_model"
+            android:title="@string/pref_gemini_model"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:defaultValue="https://api.openai.com/v1"
+            android:key="ai_url"
+            android:title="@string/pref_ai_url"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="ai_key"
+            android:title="@string/pref_ai_key" />
+        <EditTextPreference
+            android:defaultValue="gpt-4o-mini"
+            android:key="ai_model"
+            android:title="@string/pref_ai_model"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            android:key="glossary"
+            android:summary="@string/pref_glossary_sum"
+            android:title="@string/pref_glossary" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="wifi_only_dl"
+            android:summary="@string/pref_wifi_only_sum"
+            android:title="@string/pref_wifi_only" />
+        <Preference
+            android:key="open_models"
+            android:summary="@string/pref_models_sum"
+            android:title="@string/models" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_cat_tap">
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="tap_translate"
+            android:summary="@string/pref_tap_translate_sum"
+            android:title="@string/tap_translate" />
+    </PreferenceCategory>
+
+    <!-- ============ CHẾ ĐỘ / CHỤP MÀN HÌNH ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_capture">
+        <ListPreference
+            android:defaultValue="ocr"
+            android:entries="@array/mode_names"
+            android:entryValues="@array/mode_values"
+            android:key="mode"
+            android:title="@string/pref_mode"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="auto"
+            android:entries="@array/capture_names"
+            android:entryValues="@array/capture_values"
+            android:key="capture_method"
+            android:title="@string/pref_capture_method"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="entire"
+            android:entries="@array/scope_names"
+            android:entryValues="@array/scope_values"
+            android:key="proj_scope"
+            android:title="@string/pref_proj_scope"
+            app:useSimpleSummaryProvider="true" />
+        <Preference
+            android:key="open_accessibility"
+            android:summary="@string/pref_acc_sum"
+            android:title="@string/pref_acc" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="vertical_src"
+            android:summary="@string/pref_vertical_sum"
+            android:title="@string/pref_vertical" />
+        <SeekBarPreference
+            android:defaultValue="3"
+            android:key="live_interval"
+            android:max="15"
+            android:title="@string/pref_live_interval"
+            app:min="2"
+            app:showSeekBarValue="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="typed_translate"
+            android:summary="@string/pref_typed_sum"
+            android:title="@string/pref_typed" />
+        <ListPreference
+            android:defaultValue="en"
+            android:key="typed_dst"
+            android:title="@string/pref_typed_dst"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <!-- ============ BIỂU TƯỢNG NỔI ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_bubble">
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/icon_names"
+            android:entryValues="@array/icon_values"
+            android:key="icon_style"
+            android:title="@string/pref_icon_style"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="#00897B"
+            android:entries="@array/color_names"
+            android:entryValues="@array/color_values"
+            android:key="icon_color"
+            android:title="@string/pref_icon_color"
+            app:useSimpleSummaryProvider="true" />
+        <SeekBarPreference
+            android:defaultValue="52"
+            android:key="bubble_size"
+            android:max="80"
+            android:title="@string/pref_bubble_size"
+            app:min="36"
+            app:showSeekBarValue="true" />
+        <SeekBarPreference
+            android:defaultValue="85"
+            android:key="bubble_alpha"
+            android:max="100"
+            android:title="@string/pref_bubble_alpha"
+            app:min="30"
+            app:showSeekBarValue="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="edge_dim"
+            android:summary="@string/pref_edge_dim_sum"
+            android:title="@string/pref_edge_dim" />
+        <ListPreference
+            android:defaultValue="full"
+            android:entries="@array/tap_names"
+            android:entryValues="@array/tap_values"
+            android:key="tap_action"
+            android:title="@string/pref_tap_action"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="double_tap_region"
+            android:summary="@string/pref_double_tap_sum"
+            android:title="@string/pref_double_tap" />
+        <ListPreference
+            android:defaultValue="menu"
+            android:entries="@array/long_names"
+            android:entryValues="@array/long_values"
+            android:key="long_press"
+            android:title="@string/pref_long_press"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_region"
+            android:summary="@string/pref_auto_region_sum"
+            android:title="@string/pref_auto_region" />
+    </PreferenceCategory>
+
+    <!-- ============ HIỂN THỊ BẢN DỊCH ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_display">
+        <ListPreference
+            android:defaultValue="overlay"
+            android:entries="@array/result_names"
+            android:entryValues="@array/result_values"
+            android:key="result_mode"
+            android:title="@string/pref_result_mode"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="one_touch_close"
+            android:summary="@string/pref_one_touch_sum"
+            android:title="@string/pref_one_touch" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="swipe_close"
+            android:summary="@string/pref_swipe_close_sum"
+            android:title="@string/pref_swipe_close" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_close"
+            android:title="@string/pref_hide_close" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="hide_settings"
+            android:title="@string/pref_hide_settings" />
+        <Preference
+            android:key="style_preview"
+            android:summary="@string/pref_style_preview_sum"
+            android:title="@string/pref_style_preview" />
+        <ListPreference
+            android:defaultValue="sans-serif"
+            android:entries="@array/font_names"
+            android:entryValues="@array/font_values"
+            android:key="font"
+            android:title="@string/pref_font"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="normal"
+            android:entries="@array/tstyle_names"
+            android:entryValues="@array/tstyle_values"
+            android:key="text_style"
+            android:title="@string/pref_text_style"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="auto"
+            android:entries="@array/color_auto_names"
+            android:entryValues="@array/color_auto_values"
+            android:key="text_color"
+            android:title="@string/pref_text_color"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="auto"
+            android:entries="@array/color_auto_names"
+            android:entryValues="@array/color_auto_values"
+            android:key="bg_color"
+            android:title="@string/pref_bg_color"
+            app:useSimpleSummaryProvider="true" />
+        <SeekBarPreference
+            android:defaultValue="95"
+            android:key="bg_alpha"
+            android:max="100"
+            android:title="@string/pref_bg_alpha"
+            app:min="20"
+            app:showSeekBarValue="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="border"
+            android:title="@string/pref_border" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="center"
+            android:title="@string/pref_center" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="upcase"
+            android:title="@string/pref_upcase" />
+        <SeekBarPreference
+            android:defaultValue="100"
+            android:key="text_scale"
+            android:max="160"
+            android:title="@string/pref_text_scale"
+            app:min="60"
+            app:showSeekBarValue="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="manga_mode"
+            android:summary="@string/pref_manga_sum"
+            android:title="@string/pref_manga" />
+        <ListPreference
+            android:defaultValue="casual"
+            android:entries="@array/font_names"
+            android:entryValues="@array/font_values"
+            android:key="manga_font"
+            android:title="@string/pref_manga_font"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="#FFFFFF"
+            android:entries="@array/color_names"
+            android:entryValues="@array/color_values"
+            android:key="manga_bg"
+            android:title="@string/pref_manga_bg"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <!-- ============ GIỌNG ĐỌC ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_voice">
+        <ListPreference
+            android:defaultValue=""
+            android:key="tts_voice"
+            android:title="@string/pref_tts_voice"
+            app:useSimpleSummaryProvider="true" />
+        <SeekBarPreference
+            android:defaultValue="100"
+            android:key="tts_speed"
+            android:max="200"
+            android:title="@string/pref_tts_speed"
+            app:min="40"
+            app:showSeekBarValue="true" />
+        <SeekBarPreference
+            android:defaultValue="100"
+            android:key="tts_pitch"
+            android:max="200"
+            android:title="@string/pref_tts_pitch"
+            app:min="50"
+            app:showSeekBarValue="true" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_speak"
+            android:title="@string/pref_auto_speak" />
+        <Preference
+            android:key="tts_test"
+            android:title="@string/pref_tts_test" />
+    </PreferenceCategory>
+
+    <!-- ============ GIAO DIỆN ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_app">
+        <ListPreference
+            android:defaultValue="system"
+            android:entries="@array/theme_names"
+            android:entryValues="@array/theme_values"
+            android:key="theme"
+            android:title="@string/pref_theme"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="system"
+            android:entries="@array/applang_names"
+            android:entryValues="@array/applang_values"
+            android:key="app_lang"
+            android:title="@string/pref_app_lang"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <!-- ============ GIỮ BIỂU TƯỢNG NỔI KHÔNG BỊ TẮT ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_fix">
+        <Preference
+            android:key="fix_battery"
+            android:summary="@string/pref_fix_battery_sum"
+            android:title="@string/pref_fix_battery" />
+        <Preference
+            android:key="fix_appinfo"
+            android:summary="@string/pref_fix_appinfo_sum"
+            android:title="@string/pref_fix_appinfo" />
+        <Preference
+            android:key="fix_autostart"
+            android:summary="@string/pref_fix_autostart_sum"
+            android:title="@string/pref_fix_autostart" />
+        <Preference
+            android:key="fix_tile"
+            android:summary="@string/pref_fix_tile_sum"
+            android:title="@string/pref_fix_tile" />
+        <Preference
+            android:key="fix_acc_restart"
+            android:summary="@string/pref_fix_acc_sum"
+            android:title="@string/pref_fix_acc" />
+    </PreferenceCategory>
+
+    <!-- ============ KHÁC ============ -->
+    <PreferenceCategory android:title="@string/pref_cat_other">
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="save_history"
+            android:title="@string/pref_save_history" />
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="auto_copy"
+            android:title="@string/pref_auto_copy" />
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="haptics"
+            android:title="@string/pref_haptics" />
+        <Preference
+            android:key="open_history"
+            android:title="@string/history" />
+        <Preference
+            android:key="open_tutorial"
+            android:title="@string/tutorial" />
+        <Preference
+            android:key="open_privacy"
+            android:title="@string/privacy" />
+        <Preference
+            android:key="share_app"
+            android:title="@string/share_app" />
+        <Preference
+            android:key="about"
+            android:selectable="false"
+            android:title="@string/about" />
+    </PreferenceCategory>
+</PreferenceScreen>

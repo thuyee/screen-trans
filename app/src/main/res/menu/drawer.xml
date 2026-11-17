@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_history"
+            android:title="@string/history" />
+        <item
+            android:id="@+id/nav_saved"
+            android:title="@string/saved_phrases" />
+        <item
+            android:id="@+id/nav_offline"
+            android:title="@string/models" />
+        <item
+            android:id="@+id/nav_screen"
+            android:title="@string/screen_translate" />
+        <item
+            android:id="@+id/nav_tap"
+            android:title="@string/tap_translate" />
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/nav_tutorial"
+            android:title="@string/tutorial" />
+        <item
+            android:id="@+id/nav_privacy"
+            android:title="@string/privacy" />
+    </group>
+</menu>

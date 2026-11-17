@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="engine_names">
+        <item>@string/engine_auto</item>
+        <item>@string/engine_mlkit</item>
+        <item>@string/engine_gtx</item>
+        <item>@string/engine_google</item>
+        <item>@string/engine_gemini</item>
+        <item>@string/engine_openai</item>
+    </string-array>
+    <string-array name="engine_values">
+        <item>auto</item>
+        <item>mlkit</item>
+        <item>gtx</item>
+        <item>google</item>
+        <item>gemini</item>
+        <item>openai</item>
+    </string-array>
+    <string-array name="mode_names">
+        <item>@string/mode_ocr</item>
+        <item>@string/mode_acc</item>
+    </string-array>
+    <string-array name="mode_values">
+        <item>ocr</item>
+        <item>acc</item>
+    </string-array>
+    <string-array name="result_names">
+        <item>@string/result_overlay</item>
+        <item>@string/result_panel</item>
+    </string-array>
+    <string-array name="result_values">
+        <item>overlay</item>
+        <item>panel</item>
+    </string-array>
+    <string-array name="tap_names">
+        <item>@string/tap_full</item>
+        <item>@string/tap_region</item>
+    </string-array>
+    <string-array name="tap_values">
+        <item>full</item>
+        <item>region</item>
+    </string-array>
+    <string-array name="long_names">
+        <item>@string/long_menu</item>
+        <item>@string/long_region</item>
+    </string-array>
+    <string-array name="long_values">
+        <item>menu</item>
+        <item>region</item>
+    </string-array>
+    <string-array name="capture_names">
+        <item>@string/capture_auto</item>
+        <item>@string/capture_projection</item>
+    </string-array>
+    <string-array name="capture_values">
+        <item>auto</item>
+        <item>projection</item>
+    </string-array>
+    <string-array name="scope_names">
+        <item>@string/scope_entire</item>
+        <item>@string/scope_choice</item>
+    </string-array>
+    <string-array name="scope_values">
+        <item>entire</item>
+        <item>choice</item>
+    </string-array>
+    <string-array name="icon_names">
+        <item>文A</item>
+        <item>译</item>
+        <item>A↔</item>
+        <item>🌐</item>
+        <item>T</item>
+        <item>✦</item>
+    </string-array>
+    <string-array name="icon_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string-array name="font_names">
+        <item>@string/font_sans</item>
+        <item>@string/font_medium</item>
+        <item>@string/font_condensed</item>
+        <item>@string/font_serif</item>
+        <item>@string/font_mono</item>
+        <item>@string/font_casual</item>
+        <item>@string/font_cursive</item>
+    </string-array>
+    <string-array name="font_values">
+        <item>sans-serif</item>
+        <item>sans-serif-medium</item>
+        <item>sans-serif-condensed</item>
+        <item>serif</item>
+        <item>monospace</item>
+        <item>casual</item>
+        <item>cursive</item>
+    </string-array>
+    <string-array name="tstyle_names">
+        <item>@string/ts_normal</item>
+        <item>@string/ts_bold</item>
+        <item>@string/ts_italic</item>
+        <item>@string/ts_bold_italic</item>
+    </string-array>
+    <string-array name="tstyle_values">
+        <item>normal</item>
+        <item>bold</item>
+        <item>italic</item>
+        <item>bold_italic</item>
+    </string-array>
+    <!-- Bảng màu dùng cho biểu tượng / chữ / nền -->
+    <string-array name="color_names">
+        <item>@string/c_teal</item>
+        <item>@string/c_blue</item>
+        <item>@string/c_red</item>
+        <item>@string/c_orange</item>
+        <item>@string/c_yellow</item>
+        <item>@string/c_green</item>
+        <item>@string/c_purple</item>
+        <item>@string/c_pink</item>
+        <item>@string/c_gray</item>
+        <item>@string/c_black</item>
+        <item>@string/c_white</item>
+    </string-array>
+    <string-array name="color_values">
+        <item>#00897B</item>
+        <item>#1E88E5</item>
+        <item>#D32F2F</item>
+        <item>#F57C00</item>
+        <item>#FBC02D</item>
+        <item>#43A047</item>
+        <item>#8E24AA</item>
+        <item>#D81B60</item>
+        <item>#757575</item>
+        <item>#000000</item>
+        <item>#FFFFFF</item>
+    </string-array>
+    <string-array name="color_auto_names">
+        <item>@string/c_auto</item>
+        <item>@string/c_teal</item>
+        <item>@string/c_blue</item>
+        <item>@string/c_red</item>
+        <item>@string/c_orange</item>
+        <item>@string/c_yellow</item>
+        <item>@string/c_green</item>
+        <item>@string/c_purple</item>
+        <item>@string/c_pink</item>
+        <item>@string/c_gray</item>
+        <item>@string/c_black</item>
+        <item>@string/c_white</item>
+    </string-array>
+    <string-array name="color_auto_values">
+        <item>auto</item>
+        <item>#00897B</item>
+        <item>#1E88E5</item>
+        <item>#D32F2F</item>
+        <item>#F57C00</item>
+        <item>#FBC02D</item>
+        <item>#43A047</item>
+        <item>#8E24AA</item>
+        <item>#D81B60</item>
+        <item>#757575</item>
+        <item>#000000</item>
+        <item>#FFFFFF</item>
+    </string-array>
+    <string-array name="theme_names">
+        <item>@string/theme_system</item>
+        <item>@string/theme_light</item>
+        <item>@string/theme_dark</item>
+    </string-array>
+    <string-array name="theme_values">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
+    <string-array name="applang_names">
+        <item>@string/applang_system</item>
+        <item>Tiếng Việt</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="applang_values">
+        <item>system</item>
+        <item>vi</item>
+        <item>en</item>
+    </string-array>
+</resources>
