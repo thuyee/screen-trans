@@ -44,6 +44,13 @@ object Languages {
         return n.replaceFirstChar { it.titlecase(l) }
     }
 
+    /** Tên ngắn như Google Dịch ("Anh", "Việt"): bỏ tiền tố "Tiếng ". */
+    fun shortName(ctx: Context, code: String): String {
+        val n = name(ctx, code)
+        val pre = ctx.getString(R.string.lang_prefix)
+        return if (pre.isNotEmpty() && n.startsWith(pre)) n.removePrefix(pre) else n
+    }
+
     /** Toàn bộ ngôn ngữ chọn được, sắp theo tên hiển thị. */
     fun all(ctx: Context): List<String> {
         val collator = Collator.getInstance(uiLocale(ctx))

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dịch Màn Hình</string>
+    <string name="app_name">Dịch</string>
     <string name="ui_locale" translatable="false">vi</string>
-    <string name="lang_auto">Tự động nhận diện</string>
+    <string name="lang_auto">Phát hiện ngôn ngữ</string>
     <string name="lang_title">Ngôn ngữ nguồn  ⇄  ngôn ngữ đích</string>
 
     <!-- Màn hình chính -->
@@ -107,7 +107,7 @@
     <string name="save_image">Lưu ảnh</string>
     <string name="saved">Đã lưu vào thư viện (Pictures/DichManHinh)</string>
     <string name="crop">Cắt</string>
-    <string name="text_hint">Nhập hoặc dán văn bản cần dịch…</string>
+    <string name="text_hint">Dịch văn bản</string>
     <string name="voice_input">Nói</string>
     <string name="voice_missing">Thiết bị không có dịch vụ nhận dạng giọng nói</string>
     <string name="cam_live_short">Camera trực tiếp</string>
@@ -325,4 +325,14 @@
     <string name="hw_back">Xóa lùi</string>
     <string name="hw_downloading">Đang tải gói viết tay cho ngôn ngữ này (lần đầu)…</string>
     <string name="hw_unsupported">Ngôn ngữ này chưa hỗ trợ viết tay</string>
+
+    <string name="lang_prefix">"Tiếng "</string>
+    <string name="advanced">Nâng cao</string>
+    <string name="adv_need_key">Công cụ này cần khóa API. Hãy nhập trong Cài đặt.</string>
+    <string name="menu_more">Menu</string>
+    <string name="live_label">Dịch trực tiếp</string>
+    <string name="camera_label">Máy ảnh</string>
+    <string name="screen_toggle">Bật / tắt dịch màn hình</string>
+    <string name="screen_on">Đang bật dịch màn hình</string>
+    <string name="screen_off">Đã tắt dịch màn hình</string>
 </resources>

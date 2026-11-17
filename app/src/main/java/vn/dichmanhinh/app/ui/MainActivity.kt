@@ -9,13 +9,13 @@ import android.os.Bundle
 import android.provider.Settings
 import android.speech.RecognizerIntent
 import android.view.View
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CancellationException
@@ -70,12 +70,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(b.root)
         prefs = Prefs(this)
 
-        b.toolbar.setNavigationOnClickListener { b.drawer.openDrawer(GravityCompat.START) }
-        b.navView.setNavigationItemSelectedListener {
-            nav(it.itemId)
-            b.drawer.closeDrawers()
-            true
-        }
+        b.btnSaved.setOnClickListener { nav(R.id.nav_saved) }
+        b.btnScreen.setOnClickListener { toggleScreen() }
+        b.btnScreen.setOnLongClickListener { nav(R.id.nav_screen); true }
+        b.btnAdvanced.setOnClickListener { chooseEngine() }
+        b.btnMenu.setOnClickListener { showMenu() }
 
         b.btnSrc.setOnClickListener {
             LanguagePicker.show(this, this, true, prefs.src) { prefs.src = it; updateLangs(); schedule() }
@@ -107,14 +106,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, if (on) R.string.saved_added else R.string.saved_removed, Toast.LENGTH_SHORT).show()
         }
 
-        b.chipCamera.setOnClickListener { startActivity(Intent(this, CameraTranslateActivity::class.java)) }
-        b.chipImage.setOnClickListener { startActivity(Intent(this, ImageTranslateActivity::class.java)) }
-        b.chipHand.setOnClickListener {
+        b.btnCamera.setOnClickListener { startActivity(Intent(this, CameraTranslateActivity::class.java)) }
+        b.btnHand.setOnClickListener {
             hand.launch(Intent(this, HandwritingActivity::class.java).putExtra("lang", speakLang()))
         }
-        b.chipConv.setOnClickListener { startActivity(Intent(this, ConversationActivity::class.java)) }
-        b.chipTranscribe.setOnClickListener { startActivity(Intent(this, TranscribeActivity::class.java)) }
-        b.chipScreen.setOnClickListener { startActivity(Intent(this, ScreenActivity::class.java)) }
+        b.btnLive.setOnClickListener { chooseLive() }
 
         updateLangs()
         if (savedInstanceState == null) {
@@ -144,6 +140,7 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_history -> startActivity(Intent(this, HistoryActivity::class.java))
             R.id.nav_saved -> startActivity(Intent(this, HistoryActivity::class.java).putExtra("saved", true))
             R.id.nav_offline -> startActivity(Intent(this, ModelsActivity::class.java))
+            R.id.nav_image -> startActivity(Intent(this, ImageTranslateActivity::class.java))
             R.id.nav_screen -> startActivity(Intent(this, ScreenActivity::class.java))
             R.id.nav_tap -> toggleTap()
             R.id.nav_settings -> startActivity(Intent(this, SettingsActivity::class.java))
@@ -152,9 +149,66 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun refreshNav() {
-        b.navView.menu.findItem(R.id.nav_tap)?.title =
+    private fun showMenu() {
+        val pm = PopupMenu(this, b.btnMenu)
+        pm.menuInflater.inflate(R.menu.more, pm.menu)
+        pm.menu.findItem(R.id.nav_tap)?.title =
             getString(if (prefs.tapTranslate) R.string.tap_translate_on else R.string.tap_translate_off)
+        pm.setOnMenuItemClickListener { nav(it.itemId); true }
+        pm.show()
+    }
+
+    /** Nút "Dịch trực tiếp": chọn Hội thoại hai người hoặc Phiên âm bài nói dài. */
+    private fun chooseLive() {
+        val items = arrayOf(getString(R.string.conversation), getString(R.string.transcribe))
+        AlertDialog.Builder(this)
+            .setTitle(R.string.live_label)
+            .setItems(items) { _, which ->
+                startActivity(Intent(this, if (which == 0) ConversationActivity::class.java else TranscribeActivity::class.java))
+            }
+            .show()
+    }
+
+    /** Nút "Nâng cao": chọn công cụ dịch (Tự động, ngoại tuyến, Google web, Gemini, AI tương thích OpenAI…). */
+    private fun chooseEngine() {
+        val names = resources.getStringArray(R.array.engine_names)
+        val values = resources.getStringArray(R.array.engine_values)
+        val cur = values.indexOf(prefs.engine).coerceAtLeast(0)
+        AlertDialog.Builder(this)
+            .setTitle(R.string.pref_engine)
+            .setSingleChoiceItems(names, cur) { d, which ->
+                val v = values[which]
+                prefs.sp.edit().putString("engine", v).apply()
+                d.dismiss()
+                val needKey = (v == "google" && prefs.googleKey.isEmpty()) ||
+                    (v == "gemini" && prefs.geminiKey.isEmpty()) || (v == "openai" && prefs.aiKey.isEmpty())
+                if (needKey) {
+                    Toast.makeText(this, R.string.adv_need_key, Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                } else schedule()
+            }
+            .setNeutralButton(R.string.settings) { _, _ -> startActivity(Intent(this, SettingsActivity::class.java)) }
+            .setNegativeButton(R.string.close, null)
+            .show()
+    }
+
+    /** Nút bật / tắt dịch màn hình (bong bóng nổi). Nhấn giữ để mở cài đặt dịch màn hình. */
+    private fun toggleScreen() {
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
+        ) notifPerm.launch(Manifest.permission.POST_NOTIFICATIONS)
+        val wasRunning = BubbleService.running
+        BubbleLauncher.toggle(this)
+        Toast.makeText(this, if (wasRunning) R.string.screen_off else R.string.screen_on, Toast.LENGTH_SHORT).show()
+        b.root.postDelayed({ refreshNav() }, 700)
+    }
+
+    private fun refreshNav() {
+        // nút dịch màn hình sáng lên khi bong bóng đang chạy
+        val on = BubbleService.running
+        b.btnScreen.setBackgroundResource(if (on) R.drawable.bg_circle_mic else R.drawable.bg_circle_btn)
+        b.btnScreen.setColorFilter(if (on) ContextCompat.getColor(this, R.color.mic_icon) else 0, android.graphics.PorterDuff.Mode.SRC_IN)
+        if (!on) b.btnScreen.clearColorFilter()
     }
 
     /** Chép để dịch: sao chép chữ ở app bất kỳ -> hiện khung dịch nhanh (cần dịch vụ nổi đang chạy). */
@@ -175,7 +229,6 @@ class MainActivity : AppCompatActivity() {
             )
             Toast.makeText(this, R.string.tap_translate_hint, Toast.LENGTH_LONG).show()
         }
-        refreshNav()
     }
 
     private fun handleIntent(i: Intent?) {
@@ -213,8 +266,8 @@ class MainActivity : AppCompatActivity() {
     // ---------------------------------------------------------------- ngôn ngữ / nhập
 
     private fun updateLangs() {
-        b.btnSrc.text = Languages.name(this, prefs.src)
-        b.btnDst.text = Languages.name(this, prefs.dst)
+        b.btnSrc.text = Languages.shortName(this, prefs.src)
+        b.btnDst.text = Languages.shortName(this, prefs.dst)
     }
 
     private fun setInput(t: String) {
@@ -260,7 +313,7 @@ class MainActivity : AppCompatActivity() {
         val t = b.input.text.toString().trim()
         b.btnClear.visibility = if (t.isEmpty()) View.INVISIBLE else View.VISIBLE
         if (t.isEmpty()) {
-            b.cardResult.visibility = View.GONE
+            b.resultBox.visibility = View.GONE
             b.tvDetected.text = ""
             curSrc = ""
             curDst = ""
@@ -335,7 +388,7 @@ class MainActivity : AppCompatActivity() {
         b.romanization.visibility = if (rom.isNullOrBlank()) View.GONE else View.VISIBLE
         b.details.text = details
         b.details.visibility = if (details.isBlank()) View.GONE else View.VISIBLE
-        b.cardResult.visibility = View.VISIBLE
+        b.resultBox.visibility = View.VISIBLE
         b.tvDetected.text = if (prefs.src == Languages.AUTO && det != null)
             getString(R.string.detected, Languages.name(this, det)) else ""
         paintStar()

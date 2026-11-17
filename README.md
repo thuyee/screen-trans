@@ -10,6 +10,12 @@
 > ⚠️ Mã được viết và kiểm tra tĩnh (XML hợp lệ, id/chuỗi/drawable/lớp/manifest khớp, ngoặc cân bằng) nhưng **chưa biên dịch
 > hay chạy thử trên máy thật**. Lần build đầu có thể còn lỗi nhỏ — gửi log lỗi là sửa được.
 
+## Giao diện trang chủ
+Bố cục theo ảnh Google Dịch bản mới (hỗ trợ sáng/tối): ★ Sổ cụm từ ở góc trái, **nút bật/tắt dịch màn hình** cạnh đó (sáng lên khi đang chạy; nhấn giữ để mở cài đặt),
+tên app + nút **Nâng cao** (chọn công cụ dịch) ở giữa, nút menu ở góc phải; khung "Dịch văn bản" lớn bo góc dưới có nút viết tay;
+hai nút ngôn ngữ ngắn "Anh ⇄ Việt"; hàng dưới: **Dịch trực tiếp** (Hội thoại / Phiên âm), **micro lớn màu đào**, **Máy ảnh**.
+Tên hiển thị của app là "Dịch" (không dùng tên/logo Google).
+
 ## Tính năng giống Google Dịch
 | Tính năng | Ghi chú |
 |---|---|

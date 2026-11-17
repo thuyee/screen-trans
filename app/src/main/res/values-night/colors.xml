@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Màu riêng của trang chủ (chế độ tối, giống Google Dịch) -->
+    <color name="screen_bg">#1F1F1F</color>
+    <color name="panel_bg">#131314</color>
+    <color name="pill_bg">#131314</color>
+    <color name="hint_text">#9AA0A6</color>
+    <color name="mic_bg">#FFB59E</color>
+    <color name="mic_icon">#5C1A0A</color>
+    <color name="side_bg">#533E39</color>
+    <color name="side_icon">#FFDAD2</color>
+    <color name="side_label">#E3E3E3</color>
+</resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screen Translator</string>
+    <string name="app_name">Translate</string>
     <string name="ui_locale" translatable="false">en</string>
-    <string name="lang_auto">Auto-detect</string>
+    <string name="lang_auto">Detect language</string>
     <string name="lang_title">Source language  ⇄  target language</string>
 
     <string name="main_subtitle">Translate text, voice, camera, handwriting and the screen. NO ads.</string>
@@ -104,7 +104,7 @@
     <string name="save_image">Save image</string>
     <string name="saved">Saved to gallery (Pictures/DichManHinh)</string>
     <string name="crop">Crop</string>
-    <string name="text_hint">Type or paste text to translate…</string>
+    <string name="text_hint">Translate text</string>
     <string name="voice_input">Speak</string>
     <string name="voice_missing">This device has no speech recognition service</string>
     <string name="cam_live_short">Live camera</string>
@@ -320,4 +320,14 @@
     <string name="hw_back">Backspace</string>
     <string name="hw_downloading">Downloading the handwriting pack for this language (first time)…</string>
     <string name="hw_unsupported">Handwriting is not available for this language</string>
+
+    <string name="lang_prefix">""</string>
+    <string name="advanced">Advanced</string>
+    <string name="adv_need_key">This engine needs an API key. Enter it in Settings.</string>
+    <string name="menu_more">Menu</string>
+    <string name="live_label">Live translate</string>
+    <string name="camera_label">Camera</string>
+    <string name="screen_toggle">Turn screen translation on / off</string>
+    <string name="screen_on">Screen translation is on</string>
+    <string name="screen_off">Screen translation is off</string>
 </resources>
